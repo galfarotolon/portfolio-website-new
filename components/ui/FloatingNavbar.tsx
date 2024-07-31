@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-// import { ModeToggle } from "./ModeToggle";
+import { ModeToggle } from "./ModeToggle";
 
 export const FloatingNav = ({
   navItems,
@@ -86,7 +86,8 @@ export const FloatingNav = ({
             <span className=" text-sm !cursor-pointer">{navItem.name}</span>
           </Link>
         ))}
-        {/* remove this login btn */}
+        {/* toggle dark/light btn */}
+        {/* <ModeToggle /> */}
       </motion.div>
     </AnimatePresence>
   );
