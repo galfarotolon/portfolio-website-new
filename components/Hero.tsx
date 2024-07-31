@@ -56,9 +56,9 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hello! I'm Guillermo, a creative web developer focused on Next.js
-            and modern web development. Check out my portfolio and let's get in
-            touch to build something great.
+            Hello! I&apos;m Guillermo, a creative web developer focused on
+            Next.js and modern web development. Check out my portfolio and
+            let&apos;s get in touch to build something great.
           </p>
 
           <a href="#about">
