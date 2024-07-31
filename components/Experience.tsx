@@ -87,11 +87,11 @@ const Experience: React.FC = () => {
         <h2 className="text-center text-white">Work Experience.</h2> */}
 
         <h2 className="text-center text-[40px] md:text-3xl lg:text-4xl font-bold mb-10 ">
-          Some of my <span className="text-violet-500">Work Experience</span>
+          My <span className="text-violet-500">Experience</span>
         </h2>
       </motion.div>
 
-      <div className="text-white-100 py-4">
+      <div className="text-white-100 py-4 sm:px-20">
         In 2020, I switched careers by completing a full stack web development
         bootcamp. Now, with over 3 years of experience, I have worked in
         startups and undertaken freelance projects. My goal is to become a full
