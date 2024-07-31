@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { HoverBorderGradient } from "./HoverBorderGradient";
 import { FaLocationArrow } from "react-icons/fa6";
 
 export const CardHover = ({
@@ -64,24 +65,25 @@ export const CardHover = ({
             <div className="p-4">
               <CardTitle>{item.title}</CardTitle>
               <CardDescription>{item.description}</CardDescription>
-              <div className="flex items-center justify-between mt-4">
-                <div className="flex items-center space-x-2">
+              <div className="flex flex-col min-[480px]:flex-row items-center mt-4 justify-between ">
+                <div className="flex items-center max-[480px]:mb-4 ">
                   {item.iconLists.map((icon, index) => (
                     <div
                       key={index}
                       className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
                       style={{
-                        transform: `translateX(-${15 * index + 2}px)`,
+                        transform: `translateX(-${3 * index + 2}px)`,
                       }}
                     >
                       <img src={icon} alt="icon" className="p-2" />
                     </div>
                   ))}
                 </div>
-                <div className="flex justify-center items-center">
-                  <p className="flex text-sm text-purple">Check Live Site</p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div>
+
+                <HoverBorderGradient className="text-xs flex text-center justify-center items-center ">
+                  View website
+                  <FaLocationArrow className="ml-2" />
+                </HoverBorderGradient>
               </div>
             </div>
           </Card>
