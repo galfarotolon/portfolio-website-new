@@ -199,6 +199,61 @@ export const projects = [
       thumbnail: "/exp4.svg",
     },
   ];
+
+
+  export const experiences = [
+    {
+      title: "Full Stack Web Development Student",
+      company_name: "Lambda School (Now Bloom Institute of Technology)",
+      icon: "/lambda-icon.png", // Replace with your actual icon path
+      iconBg: "#E6DEDD",
+      date: "March 2020 - January 2021",
+      points: [
+        "Completed a 10-month full-time immersive software development and computer science bootcamp.",
+        "Learned and applied full-stack web development skills."
+      ],
+    },
+    {
+      title: "Frontend Developer",
+      company_name: "Trisbee",
+      icon: "/trisbee-icon.png", // Replace with your actual icon path
+      iconBg: "#383E56",
+      date: "February 2021 - December 2023",
+      points: [
+        "Contributed to the development of three web applications: Trisbee Pay, Backoffice, and Business Dashboard.",
+        "Improved UI/UX, created new features, and adapted the apps to the Peru business model.",
+        "Developed and launched two fully-functional and SEO-optimized websites using Next.js and TypeScript.",
+        "Streamlined business processes and improved efficiency through an intuitive UI for managing users and merchants."
+      ],
+    },
+    {
+      title: "Freelance Frontend Developer",
+      company_name: "Memento360",
+      icon: "/memento-icon.png", // Replace with your actual icon path
+      iconBg: "#E6DEDD",
+      date: "September 2022 - Present",
+      points: [
+        "Built the site from scratch for a client, implemented Google Analytics and Google Tag Manager.",
+        "Improved SEO to position the website in search engines.",
+        "Used tools such as Next.js, styled-components, Material UI, React Hook Forms.",
+        "Performed updates and continued to improve the site regularly."
+      ],
+    },
+    {
+      title: "Freelance Full-Stack Developer",
+      company_name: "Various Clients",
+      icon: "/ga-digital.png", // Replace with your actual icon path
+      iconBg: "#383E56",
+      date: "January 2024 - Present",
+      points: [
+        "Developed websites for various clients, including e-commerce sites, catalogs, and landing pages.",
+        "Worked on all aspects of the development process, from client consultations to deployment and maintenance.",
+        "Created fully responsive, user-friendly, and SEO-optimized web solutions using React, Next.js, and TypeScript.",
+        "Consistently delivered high-quality projects that met client expectations and business goals."
+      ],
+    },
+    
+  ];
   
   export const socialMedia = [
     {
