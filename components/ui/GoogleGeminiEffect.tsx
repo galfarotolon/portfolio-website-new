@@ -28,7 +28,7 @@ export const GoogleGeminiEffect = ({
       <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
         {description}
       </p>
-      <div className="w-full h-[940px] -top-60 md:-top-80  flex items-center justify-center bg-red-transparent absolute ">
+      <div className="w-full h-[900px] -top-60 md:-top-80  flex items-center justify-center bg-red-transparent absolute ">
         <MagicButton
           title="Let's Connect"
           position="left"
