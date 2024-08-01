@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { motion, MotionValue } from "framer-motion";
 import React from "react";
+import MagicButton from "./MagicButton";
 
 const transition = {
   duration: 0,
@@ -22,13 +23,18 @@ export const GoogleGeminiEffect = ({
   return (
     <div className={cn("sticky top-80", className)}>
       <h2 className="text-center text-[40px] md:text-3xl lg:text-4xl font-bold ">
-        This is my <span className="text-red-400">Tech Stack</span>
+        Get <span className="text-red-400">In Touch</span>
       </h2>
       <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
-        {description ||
-          `Scroll this component and see the bottom SVG come to life wow this
-        works!`}
+        {description}
       </p>
+      <div className="w-full h-[940px] -top-60 md:-top-80  flex items-center justify-center bg-red-transparent absolute ">
+        <MagicButton
+          title="Let's Connect"
+          position="left"
+          otherClasses="bg-black z-50 relative"
+        />
+      </div>
       <div className="w-full h-full flex items-center justify-center bg-red-transparent relative">
         <svg
           width="1440"

@@ -246,7 +246,7 @@ export const projects = [
       iconBg: "#383E56",
       date: "January 2024 - Present",
       points: [
-        "Developed websites for various clients, including e-commerce sites, catalogs, and landing pages.",
+        "Developed websites for various clients, including e-commerce sites, web applications and landing pages.",
         "Worked on all aspects of the development process, from client consultations to deployment and maintenance.",
         "Created fully responsive, user-friendly, and SEO-optimized web solutions using React, Next.js, and TypeScript.",
         "Consistently delivered high-quality projects that met client expectations and business goals."
