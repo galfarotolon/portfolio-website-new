@@ -1,27 +1,20 @@
-import { motion } from "framer-motion";
 import { FaAddressBook, FaTimes } from "react-icons/fa";
 
-const ToggleButton = ({
-  isOpen,
-  setOpen,
-}: {
+const ToggleButton: React.FC<{
   isOpen: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+  setIsOpen: (isOpen: boolean) => void;
+}> = ({ isOpen, setIsOpen }) => {
   return (
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        setOpen(!isOpen);
-      }}
-      className="flex items-center justify-center w-12 h-12 bg-gray-800 rounded-full"
+    <div
+      className="fixed top-10 left-10 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer z-[6000]"
+      onClick={() => setIsOpen(!isOpen)}
     >
       {isOpen ? (
-        <FaTimes size={24} color="white" />
+        <FaTimes className="text-white" />
       ) : (
-        <FaAddressBook size={24} color="white" />
+        <FaAddressBook className="text-white" />
       )}
-    </button>
+    </div>
   );
 };
 

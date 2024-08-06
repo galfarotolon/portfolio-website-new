@@ -4,13 +4,12 @@ import { FaLinkedin, FaFileAlt, FaWhatsapp, FaPhone } from "react-icons/fa";
 const variants = {
   open: {
     transition: {
-      staggerChildren: 0.5,
+      staggerChildren: 0.2,
     },
   },
   closed: {
     transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
+      staggerChildren: 0.001,
     },
   },
 };
@@ -19,24 +18,14 @@ const itemVariants = {
   open: {
     y: 0,
     opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 50,
-      damping: 10,
-    },
   },
   closed: {
-    y: 50,
+    y: 0,
     opacity: 0,
-    transition: {
-      type: "spring",
-      stiffness: 50,
-      damping: 10,
-    },
   },
 };
 
-const SidebarLinks: React.FC = () => {
+const SidebarLinks: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
   const items = [
     {
       name: "LinkedIn",
@@ -57,7 +46,7 @@ const SidebarLinks: React.FC = () => {
       className="flex flex-col items-center justify-center h-full"
       variants={variants}
       initial="closed"
-      animate="open"
+      animate={isOpen ? "open" : "closed"}
     >
       {items.map((item) => (
         <motion.a

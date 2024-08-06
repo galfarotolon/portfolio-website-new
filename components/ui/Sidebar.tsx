@@ -1,22 +1,22 @@
 "use client";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef } from "react";
+import { motion, useCycle } from "framer-motion";
 import SidebarLinks from "./SidebarLinks";
-import { cn } from "@/lib/utils";
 import { FaAddressBook, FaTimes } from "react-icons/fa";
 
 const sidebarVariants = {
-  open: {
-    clipPath: "circle(1500px at 50px 50px)",
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
     transition: {
       type: "spring",
       stiffness: 20,
-      damping: 5,
+      restDelta: 2,
     },
-  },
+  }),
   closed: {
-    clipPath: "circle(30px at 50px 50px)",
+    clipPath: "circle(30px at 40px 40px)",
     transition: {
+      delay: 0.5,
       type: "spring",
       stiffness: 400,
       damping: 40,
@@ -25,51 +25,35 @@ const sidebarVariants = {
 };
 
 const Sidebar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const handleClickOutside = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    if (e.target === e.currentTarget) {
-      setIsOpen(false);
-    }
-  };
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
 
   return (
     <>
-      <div className="fixed top-10 left-10 z-[6000]">
-        <motion.div
-          className={cn(
-            "w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer"
-          )}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? (
-            <FaTimes
-              className="text-white cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            />
-          ) : (
-            <FaAddressBook className="text-white" />
-          )}
-        </motion.div>
-      </div>
       <motion.div
-        className={cn("fixed top-0 left-0 h-full w-full z-[5000]")}
-        onClick={handleClickOutside}
-        initial="closed"
+        className="fixed top-0 left-0 h-full w-full bg-transparent z-[5000]"
+        initial={false}
         animate={isOpen ? "open" : "closed"}
         variants={sidebarVariants}
+        ref={containerRef}
       >
         <motion.div
-          className={cn(
-            "h-full p-8 max-w-xs w-full relative",
+          className={`${
             isOpen ? "bg-gray-800" : "bg-transparent"
-          )}
+          } h-full p-8 max-w-xs w-full`}
         >
-          <div className="flex justify-end mb-4"></div>
-          <SidebarLinks />
+          <SidebarLinks isOpen={isOpen} />
         </motion.div>
+      </motion.div>
+      <motion.div
+        className="fixed top-10 left-10 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer z-[6000]"
+        onClick={() => toggleOpen()}
+      >
+        {isOpen ? (
+          <FaTimes className="text-white" />
+        ) : (
+          <FaAddressBook className="text-white" />
+        )}
       </motion.div>
     </>
   );
