@@ -32,10 +32,10 @@ const ExperienceCard: React.FC<ExperienceProps> = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 50, scale: 0.8 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className="mb-20"
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
     >
       <VerticalTimelineElement
         contentStyle={{ background: "#1d1836", color: "#fff" }}
