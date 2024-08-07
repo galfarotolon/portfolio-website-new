@@ -23,12 +23,13 @@ const Parallax = ({ type }: { type: string }) => {
           : "bg-gradient-to-b from-gray-900 to-gray-500"
       }`}
     >
-      <motion.h1
+      <motion.h2
         style={{ y: yText }}
-        className="text-white text-4xl lg:text-6xl font-bold z-10"
+        className="text-center text-[40px] md:text-3xl lg:text-6xl font-bold mb-4 z-10"
       >
-        About Me
-      </motion.h1>
+        Bringing your sites <span className="text-yellow-300">to life</span>
+      </motion.h2>
+
       <motion.div
         className="absolute inset-0 bg-cover bg-bottom z-30"
         style={{ backgroundImage: "url('/mountains.png')" }}
