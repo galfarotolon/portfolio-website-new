@@ -3,7 +3,7 @@ import { Compare } from "./ui/Compare";
 
 const Process = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-screen py-16">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen py-16 max-w-7xl mx-auto">
       <h2 className="text-center text-[40px] md:text-3xl lg:text-4xl font-bold mb-4">
         <span className="text-orange-500">My Code,</span> Your Vision.
       </h2>

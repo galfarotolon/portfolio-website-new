@@ -72,3 +72,13 @@ html {
   scroll-behavior: smooth;
  
 }
+
+.parallax {
+  & .mountains {
+    background-image: url("/mountains.png");
+  }
+
+  & .stars {
+    background-image: url("/stars.png");
+  }
+}

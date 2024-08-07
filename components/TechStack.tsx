@@ -20,7 +20,7 @@ export const TechStack = () => {
 
   return (
     <div
-      className="h-[300vh] w-full  rounded-md relative pt-40 overflow-clip"
+      className="h-[300vh] w-full  rounded-md relative pt-40 overflow-clip "
       ref={ref}
     >
       <div className="sticky top-0 h-screen">

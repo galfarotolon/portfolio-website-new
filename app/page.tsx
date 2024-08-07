@@ -9,15 +9,21 @@ import { TechStack } from "@/components/TechStack";
 import Process from "@/components/Process";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/ui/Sidebar";
+import Parallax from "@/components/ui/Parallax";
 
 export default function Home() {
   return (
-    <main className="relative flex justify-center items-center flex-col mx-auto sm:px-10 px-5 overflow-clip">
-      <div className="max-w-7xl w-full">
+    <main className="relative flex justify-center items-center flex-col mx-auto overflow-clip w-full">
+      <div className="max-w-7xl">
         <FloatingNav navItems={navItems} />
         <Sidebar />
         <Hero />
         <Grid />
+      </div>
+      <div className="w-full">
+        <Parallax type="services" />
+      </div>
+      <div className="max-w-7xl">
         <RecentProjects />
         <Clients />
         <Experience />
