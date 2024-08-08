@@ -131,7 +131,7 @@ const ContactForm: React.FC = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}
-          className="space-y-6"
+          className="space-y-6 absolute inset-0"
         >
           <LabelInputContainer className="mb-4">
             <Label htmlFor="name">Name</Label>
