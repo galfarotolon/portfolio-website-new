@@ -7,6 +7,29 @@ import { useState } from "react";
 import { HoverBorderGradient } from "./HoverBorderGradient";
 import { FaLocationArrow } from "react-icons/fa6";
 
+const containerVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  initial: {
+    x: -50,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
 export const CardHover = ({
   items,
   className,
@@ -23,19 +46,22 @@ export const CardHover = ({
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div
+    <motion.div
+      variants={containerVariants}
+      initial="initial"
+      whileInView="animate"
       className={cn(
         "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-6",
         className
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          href={item.link}
+        <motion.div
           key={item.link}
           className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
+          variants={itemVariants}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
@@ -79,17 +105,18 @@ export const CardHover = ({
                     </div>
                   ))}
                 </div>
-
-                <HoverBorderGradient className="text-xs flex text-center justify-center items-center ">
-                  View website
-                  <FaLocationArrow className="ml-2" />
-                </HoverBorderGradient>
+                <Link href={item.link}>
+                  <HoverBorderGradient className="text-xs flex text-center justify-center items-center ">
+                    View website
+                    <FaLocationArrow className="ml-2" />
+                  </HoverBorderGradient>
+                </Link>
               </div>
             </div>
           </Card>
-        </Link>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
@@ -101,14 +128,15 @@ export const Card = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div
+    <motion.div
+      variants={itemVariants}
       className={cn(
         "rounded-2xl h-full w-full overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-purple-500 relative z-20",
         className
       )}
     >
       <div className="relative z-50">{children}</div>
-    </div>
+    </motion.div>
   );
 };
 

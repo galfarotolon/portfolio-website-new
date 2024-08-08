@@ -10,6 +10,7 @@ import Process from "@/components/Process";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/ui/Sidebar";
 import Parallax from "@/components/ui/Parallax";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -28,8 +29,10 @@ export default function Home() {
         <Clients />
         <Experience />
         <Process />
-        <TechStack />
-        <Footer />
+        <Contact />
+        {/* <TechStack /> */}
+        {/* 
+        <Footer /> */}
       </div>
     </main>
   );

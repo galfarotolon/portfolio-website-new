@@ -1,7 +1,36 @@
+"use client";
 import { FaLocationArrow } from "react-icons/fa6";
 import MagicButton from "./ui/MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { motion } from "framer-motion";
+
+const variants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 2,
+    },
+  },
+};
+
+const buttonVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: 2.5, // Delay to ensure the text appears first
+      duration: 1,
+    },
+  },
+};
 
 const Hero = () => {
   return (
@@ -41,9 +70,10 @@ const Hero = () => {
 
       <div className="flex justify-center relative my-20 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            Bringing Your Ideas to Life with Code
-          </p>
+          <TextGenerateEffect
+            words="Bringing Your Ideas to Life with Code"
+            className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80"
+          />
 
           {/**
            *  Link: https://ui.aceternity.com/components/text-generate-effect
@@ -53,21 +83,33 @@ const Hero = () => {
           <TextGenerateEffect
             words="Where Creativity Meets Technology"
             className="text-center text-4xl md:text-5xl lg:text-6xl xl:px-10"
+            colorWords={["creativity", "technology"]}
+            colors={["text-green-500", "text-blue-500"]}
           />
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+          <motion.p
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl"
+          >
             Hello! I&apos;m Guillermo, a creative web developer focused on
             Next.js and modern web development. Check out my portfolio and
             let&apos;s get in touch to build something great.
-          </p>
+          </motion.p>
 
-          <a href="#projects">
+          <motion.a
+            href="#projects"
+            variants={buttonVariants}
+            initial="initial"
+            animate="animate"
+          >
             <MagicButton
               title="See my work"
               icon={<FaLocationArrow />}
               position="right"
             />
-          </a>
+          </motion.a>
         </div>
       </div>
     </div>

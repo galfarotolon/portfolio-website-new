@@ -8,20 +8,25 @@ const Parallax = ({ type }: { type: string }) => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start end", "end start"],
   });
 
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "500%"]);
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["-400%", "500%"]);
+  const yBg = useTransform(scrollYProgress, [0, 3], ["-20%", "100%"]);
+
+  /* 
+  add thiss to th first div to add bg gradient
+  ${
+        type === "services"
+          ? "bg-gradient-to-b from-gray-900 to-gray-800"
+          : "bg-gradient-to-b from-gray-900 to-gray-500"
+      }
+  */
 
   return (
     <div
       ref={ref}
-      className={`relative flex items-center justify-center overflow-hidden w-screen h-screen ${
-        type === "services"
-          ? "bg-gradient-to-b from-gray-900 to-gray-800"
-          : "bg-gradient-to-b from-gray-900 to-gray-500"
-      }`}
+      className={`relative flex items-center justify-center overflow-hidden w-screen h-screen `}
     >
       <motion.h2
         style={{ y: yText }}
@@ -48,7 +53,7 @@ const Parallax = ({ type }: { type: string }) => {
         style={{ x: yBg, backgroundImage: "url('/stars.png')" }}
       />
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-gray-900 to-transparent z-50"></div>
+        {/* <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-gray-900 to-transparent z-50"></div> */}
         <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-gray-900 to-transparent z-50"></div>
       </div>
     </div>

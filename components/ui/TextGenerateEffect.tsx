@@ -3,44 +3,43 @@ import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export const TextGenerateEffect = ({
-  words,
-  className,
-}: {
+interface TextGenerateEffectProps {
   words: string;
   className?: string;
+  colorWords?: string[];
+  colors?: string[];
+}
+
+export const TextGenerateEffect: React.FC<TextGenerateEffectProps> = ({
+  words,
+  className,
+  colorWords = [],
+  colors = ["text-blue-500"],
 }) => {
   const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
+  const wordsArray = words.split(" ");
+
   useEffect(() => {
     animate(
       "span",
-      {
-        opacity: 1,
-      },
+      { opacity: 1 },
       {
         duration: 2,
         delay: stagger(0.2),
       }
     );
-  }, [scope.current]);
+  }, [scope, animate]);
 
   const renderWords = () => {
     return (
       <motion.div ref={scope}>
         {wordsArray.map((word, idx) => {
+          const isColorWord = colorWords.includes(word.toLowerCase());
+          const colorClass = isColorWord
+            ? colors[colorWords.indexOf(word.toLowerCase()) % colors.length]
+            : "dark:text-white text-black";
           return (
-            <motion.span
-              key={word + idx}
-              // change here if idx is greater than 3, change the text color to #CBACF9
-              className={` ${
-                idx > 2
-                  ? "text-blue-500"
-                  : idx === 1
-                  ? "text-green-500"
-                  : "dark:text-white text-black"
-              } opacity-0`}
-            >
+            <motion.span key={word + idx} className={`${colorClass} opacity-0`}>
               {word}{" "}
             </motion.span>
           );
@@ -51,12 +50,8 @@ export const TextGenerateEffect = ({
 
   return (
     <div className={cn("font-bold", className)}>
-      {/* mt-4 to my-4 */}
       <div className="my-4">
-        {/* remove  text-2xl from the original */}
-        <div className=" dark:text-white text-black leading-snug tracking-wide">
-          {renderWords()}
-        </div>
+        <div className="leading-snug tracking-wide">{renderWords()}</div>
       </div>
     </div>
   );
