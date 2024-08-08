@@ -65,7 +65,7 @@ const ContactForm: React.FC = () => {
   return (
     <motion.div
       ref={ref}
-      className="contact flex flex-col lg:flex-row items-center gap-10 max-w-7xl mx-auto py-12"
+      className="contact flex flex-col lg:flex-row items-center gap-10 max-w-7xl mx-auto py-12 mb-10"
       variants={formVariants}
       initial="initial"
       whileInView="animate"
@@ -74,9 +74,19 @@ const ContactForm: React.FC = () => {
         className="textContainer flex-1 space-y-8"
         variants={formVariants}
       >
-        <motion.h1 variants={formVariants} className="text-6xl font-bold">
-          Let’s work together
-        </motion.h1>
+        <motion.h2
+          variants={formVariants}
+          className="heading text-4xl lg:max-w-[45vw] font-bold"
+        >
+          Ready to take <span className="text-purple">your</span> digital
+          presence to the next level?
+        </motion.h2>
+        <motion.div className="item" variants={formVariants}>
+          <p className="text-white-200 md:mt-10 my-5 text-center font-bold">
+            Reach out to me today and let&apos;s discuss how I can help you
+            achieve your goals.
+          </p>
+        </motion.div>
         <motion.div className="item" variants={formVariants}>
           <h2 className="text-xl font-semibold">Mail</h2>
           <span className="text-gray-500">hello@react.dev</span>
