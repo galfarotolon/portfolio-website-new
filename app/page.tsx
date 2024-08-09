@@ -5,12 +5,13 @@ import Grid from "@/components/Grid";
 import RecentProjects from "@/components/RecentProjects";
 import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
-import { TechStack } from "@/components/TechStack";
+import TechStack from "@/components/TechStack";
 import Process from "@/components/Process";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/ui/Sidebar";
 import Parallax from "@/components/ui/Parallax";
 import Contact from "@/components/Contact";
+import { Connect } from "@/components/Connect";
 
 export default function Home() {
   return (
@@ -25,12 +26,13 @@ export default function Home() {
         <Parallax type="services" />
       </div>
       <div className="max-w-7xl">
+        <TechStack />
         <RecentProjects />
         <Clients />
         <Experience />
         <Process />
         <Contact />
-        {/* <TechStack /> */}
+        <Connect />
 
         <Footer />
       </div>

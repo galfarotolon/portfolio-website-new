@@ -65,7 +65,7 @@ const ContactForm: React.FC = () => {
   return (
     <motion.div
       ref={ref}
-      className="contact flex flex-col lg:flex-row items-center gap-10 max-w-7xl mx-auto py-12 mb-10"
+      className="contact flex flex-col lg:flex-row items-center gap-10 max-w-7xl mx-auto py-12 mb-10 px-4"
       variants={formVariants}
       initial="initial"
       whileInView="animate"
@@ -76,10 +76,11 @@ const ContactForm: React.FC = () => {
       >
         <motion.h2
           variants={formVariants}
-          className="heading text-4xl lg:max-w-[45vw] font-bold"
+          className="heading text-4xl lg:max-w-[45vw] font-bold text-center"
         >
-          Ready to take <span className="text-purple">your</span> digital
-          presence to the next level?
+          Ready to take{" "}
+          <span className="text-blue-500">your digital presence</span> to the
+          next level?
         </motion.h2>
         <motion.div className="item" variants={formVariants}>
           <p className="text-white-200 md:mt-10 my-5 text-center font-bold">
@@ -208,6 +209,16 @@ const ContactForm: React.FC = () => {
           >
             Submit
           </motion.button>
+          {success && (
+            <div className="text-green-500 text-sm mt-4">
+              Your message has been sent successfully!
+            </div>
+          )}
+          {error && (
+            <div className="text-red-500 text-sm mt-4">
+              There was an error sending your message. Please try again.
+            </div>
+          )}
         </motion.form>
       </div>
     </motion.div>

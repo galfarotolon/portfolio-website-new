@@ -11,7 +11,7 @@ const Parallax = ({ type }: { type: string }) => {
     offset: ["start end", "end start"],
   });
 
-  const yText = useTransform(scrollYProgress, [0, 1], ["-400%", "500%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["-200%", "300%"]);
   const yBg = useTransform(scrollYProgress, [0, 3], ["-20%", "100%"]);
 
   /* 
@@ -30,9 +30,9 @@ const Parallax = ({ type }: { type: string }) => {
     >
       <motion.h2
         style={{ y: yText }}
-        className="text-center text-[40px] md:text-3xl lg:text-6xl font-bold mb-4 z-10"
+        className="text-center text-[40px] md:text-3xl lg:text-6xl font-bold mb-4 z-10 max-w-3xl "
       >
-        Bringing your sites <span className="text-yellow-300">to life</span>
+        Transforming Ideas into <span className="text-yellow-300">Reality</span>
       </motion.h2>
 
       <motion.div
