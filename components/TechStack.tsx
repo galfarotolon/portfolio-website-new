@@ -1,51 +1,53 @@
-import { LeftCurve, RightCurve } from "./ui/Curves"; // Update to match your file structure
+"use client";
+import { motion } from "framer-motion";
+import { LeftCurve, RightCurve } from "./ui/Curves";
 import MagicButton from "./ui/MagicButton";
+import { useState } from "react";
 
 const collabApps = [
   {
     id: 1,
-    title: "Tailwind CSS",
+    name: "Tailwind CSS",
+    designation: "Utility-First CSS",
     icon: "/tail.svg",
   },
   {
     id: 2,
-    title: "TypeScript",
+    name: "TypeScript",
+    designation: "Typed JavaScript",
     icon: "/ts.svg",
   },
   {
     id: 3,
-    title: "Sanity.io",
+    name: "Sanity.io",
+    designation: "Headless CMS",
     icon: "/sanity.svg",
   },
   {
     id: 4,
-    title: "Node.js",
+    name: "Node.js",
+    designation: "Server-side JavaScript",
     icon: "/nodejs.svg",
   },
-  {
-    id: 5,
-    title: "Clerk",
-    icon: "c.svg",
-  },
+  { id: 5, name: "Clerk", designation: "Authentication", icon: "c.svg" },
   {
     id: 6,
-    title: "MongoDB",
+    name: "MongoDB",
+    designation: "NoSQL Database",
     icon: "/mongodb.svg",
   },
   {
     id: 7,
-    title: "Framer Motion",
+    name: "Framer Motion",
+    designation: "Animation Library",
     icon: "/fm.svg",
   },
-
-  {
-    id: 8,
-    title: "React",
-    icon: "/re.svg",
-  },
+  { id: 8, name: "React", designation: "UI Library", icon: "/re.svg" },
 ];
 
 const TechStack = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <div className="container lg:flex my-20">
       <div className="max-w-[25rem]">
@@ -54,7 +56,6 @@ const TechStack = () => {
         </h2>
 
         <ul className="max-w-[22rem] mb-10 md:mb-14">
-          {/* Customize these points to your strengths */}
           <li className="mb-3 py-3">
             <div className="flex items-center">
               <img src={"/check.svg"} width={24} height={24} alt="check" />
@@ -83,8 +84,9 @@ const TechStack = () => {
             </p>
           </li>
         </ul>
-
-        <MagicButton title="Explore My Work" position="left" />
+        <motion.a href="#projects" initial="initial" animate="animate">
+          <MagicButton title="Explore My Work" position="left" />
+        </motion.a>
       </div>
 
       <div className="lg:ml-auto xl:w-[38rem] mt-4">
@@ -92,12 +94,7 @@ const TechStack = () => {
           <div className="flex w-60 aspect-square m-auto border border-n-6 rounded-full">
             <div className="w-[6rem] aspect-square m-auto p-[0.2rem] bg-conic-gradient rounded-full">
               <div className="flex items-center justify-center w-full h-full bg-n-8 rounded-full">
-                <img
-                  src={"/next.svg"} // Central icon for your main technology
-                  width={48}
-                  height={48}
-                  alt="Next.js"
-                />
+                <img src={"/next.svg"} width={48} height={48} alt="Next.js" />
               </div>
             </div>
           </div>
@@ -109,6 +106,8 @@ const TechStack = () => {
                 className={`absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom rotate-${
                   index * 45
                 }`}
+                onMouseEnter={() => setHoveredIndex(app.id)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
                   className={`relative -top-[1.6rem] flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl -rotate-${
@@ -119,14 +118,38 @@ const TechStack = () => {
                     className="m-auto"
                     width={32}
                     height={32}
-                    alt={app.title}
+                    alt={app.name}
                     src={app.icon}
                   />
                 </div>
+                {hoveredIndex === app.id && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.6 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 10,
+                      },
+                    }}
+                    exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                    className="absolute -top-24 left-1/2 transform -translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
+                    style={{
+                      transform: `rotate(${-index * 45}deg)`, // Apply counter-rotation
+                    }}
+                  >
+                    <div className="font-bold text-white text-base">
+                      {app.name}
+                    </div>
+                    <div className="text-white text-xs">{app.designation}</div>
+                  </motion.div>
+                )}
               </li>
             ))}
           </ul>
-
           <LeftCurve />
           <RightCurve />
         </div>
