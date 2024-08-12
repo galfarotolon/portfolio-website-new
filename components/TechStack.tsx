@@ -48,15 +48,62 @@ const collabApps = [
 const TechStack = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  const rotationClasses = [
+    "rotate-0",
+    "rotate-45",
+    "rotate-90",
+    "rotate-135",
+    "rotate-180",
+    "rotate-225",
+    "rotate-270",
+    "rotate-315",
+  ];
+
+  const reverseRotationClasses = [
+    "no-rotate",
+    "-rotate-45",
+    "-rotate-90",
+    "-rotate-135",
+    "-rotate-180",
+    "-rotate-225",
+    "-rotate-270",
+    "-rotate-315",
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
     <div className="container lg:flex my-20">
       <div className="max-w-[25rem]">
-        <h2 className="text-left text-[40px] md:text-3xl lg:text-4xl font-bold my-4 ">
+        <motion.h2
+          className="text-left text-[40px] md:text-3xl lg:text-4xl font-bold my-4"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           My <span className="text-red-400">Tech Stack</span>
-        </h2>
+        </motion.h2>
 
-        <ul className="max-w-[22rem] mb-10 md:mb-14">
-          <li className="mb-3 py-3">
+        <motion.ul
+          className="max-w-[22rem] mb-10 md:mb-14"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.li className="mb-3 py-3" variants={itemVariants}>
             <div className="flex items-center">
               <img src={"/check.svg"} width={24} height={24} alt="check" />
               <h6 className="body-2 ml-5">High Performance</h6>
@@ -64,8 +111,8 @@ const TechStack = () => {
             <p className="text-white-100 mt-2 text-sm pl-10">
               Optimized for speed and scalability.
             </p>
-          </li>
-          <li className="mb-3 py-3">
+          </motion.li>
+          <motion.li className="mb-3 py-3" variants={itemVariants}>
             <div className="flex items-center">
               <img src={"/check.svg"} width={24} height={24} alt="check" />
               <h6 className="body-2 ml-5">Modern Design</h6>
@@ -73,8 +120,8 @@ const TechStack = () => {
             <p className="text-white-100 mt-2 text-sm pl-10">
               Beautiful, responsive, and user-friendly interfaces.
             </p>
-          </li>
-          <li className="mb-3 py-3">
+          </motion.li>
+          <motion.li className="mb-3 py-3" variants={itemVariants}>
             <div className="flex items-center">
               <img src={"/check.svg"} width={24} height={24} alt="check" />
               <h6 className="body-2 ml-5">Developer Efficiency</h6>
@@ -82,8 +129,8 @@ const TechStack = () => {
             <p className="text-white-100 mt-2 text-sm pl-10">
               Quick development cycles with TypeScript and modern frameworks.
             </p>
-          </li>
-        </ul>
+          </motion.li>
+        </motion.ul>
         <motion.a href="#projects" initial="initial" animate="animate">
           <MagicButton title="Explore My Work" position="left" />
         </motion.a>
@@ -103,16 +150,12 @@ const TechStack = () => {
             {collabApps.map((app, index) => (
               <li
                 key={app.id}
-                className={`absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom rotate-${
-                  index * 45
-                }`}
+                className={`absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom ${rotationClasses[index]}`}
                 onMouseEnter={() => setHoveredIndex(app.id)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
-                  className={`relative -top-[1.6rem] flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl -rotate-${
-                    index * 45
-                  }`}
+                  className={`relative -top-[1.6rem] flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl ${reverseRotationClasses[index]}`}
                 >
                   <img
                     className="m-auto"
@@ -123,19 +166,7 @@ const TechStack = () => {
                   />
                 </div>
                 {hoveredIndex === app.id && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.6 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: {
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 10,
-                      },
-                    }}
-                    exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                  <div
                     className="absolute -top-24 left-1/2 transform -translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
                     style={{
                       transform: `rotate(${-index * 45}deg)`, // Apply counter-rotation
@@ -145,7 +176,7 @@ const TechStack = () => {
                       {app.name}
                     </div>
                     <div className="text-white text-xs">{app.designation}</div>
-                  </motion.div>
+                  </div>
                 )}
               </li>
             ))}
