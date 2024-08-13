@@ -106,33 +106,24 @@ export const projects = [
   export const testimonials = [
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Working with Guillermo was a game-changer for our company. His expertise and commitment to excellence were evident in every aspect of the project. Guillermo’s innovative approach and problem-solving skills significantly improved our product’s performance. He’s a true professional and a joy to collaborate with.",
+      name: "Carlos Maya",
+      title: "CEO of Memento360",
+      profileImg: "/satisfied-client-1.png",
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Guillermo’s technical expertise and leadership were instrumental in the success of our projects at Trisbee. His ability to manage complex tasks while keeping the team motivated was impressive. Guillermo is a reliable and creative thinker, always delivering high-quality work.",
+      name: "Michael Kaspar",
+      title: "CTO of Trisbee",
+      profileImg: "/satisfied-client-2.png",
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Guillermo brought our vision to life with his exceptional development skills. His attention to detail and dedication to the project were outstanding. Guillermo’s work not only met our expectations but exceeded them. He is an invaluable asset to any team.",
+      name: "Jorge Bocanegra",
+      title: "Owner of Juguetes Jorge Wonka",
+      profileImg: "/satisfied-client-3.png",
     },
   ];
   
@@ -169,37 +160,6 @@ export const projects = [
     },
   ];
   
-  export const workExperience = [
-    {
-      id: 1,
-      title: "Frontend Engineer Intern",
-      desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
-      className: "md:col-span-2",
-      thumbnail: "/exp1.svg",
-    },
-    {
-      id: 2,
-      title: "Mobile App Dev - JSM Tech",
-      desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-      className: "md:col-span-2", // change to md:col-span-2
-      thumbnail: "/exp2.svg",
-    },
-    {
-      id: 3,
-      title: "Freelance App Dev Project",
-      desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-      className: "md:col-span-2", // change to md:col-span-2
-      thumbnail: "/exp3.svg",
-    },
-    {
-      id: 4,
-      title: "Lead Frontend Developer",
-      desc: "Developed and maintained user-facing features using modern frontend technologies.",
-      className: "md:col-span-2",
-      thumbnail: "/exp4.svg",
-    },
-  ];
-
 
   export const experiences = [
     {

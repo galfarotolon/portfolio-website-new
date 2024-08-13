@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useForm, FieldError } from "react-hook-form";
 import { motion, useInView } from "framer-motion";
 import { Label } from "./ui/Label";
@@ -37,6 +37,7 @@ const ContactForm: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [time, setTime] = useState("");
   const isInView = useInView(ref, { margin: "-100px" });
 
   const onSubmit = async (data: FormData) => {
@@ -61,6 +62,25 @@ const ContactForm: React.FC = () => {
       setError(true);
     }
   };
+
+  useEffect(() => {
+    const updateTime = () => {
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: "America/Lima",
+        hour12: true,
+        hour: "2-digit", // Must be "numeric" or "2-digit"
+        minute: "2-digit", // Must be "numeric" or "2-digit"
+      };
+      const formatter = new Intl.DateTimeFormat(undefined, options);
+      const date = new Date();
+      setTime(formatter.format(date));
+    };
+
+    updateTime();
+    const intervalId = setInterval(updateTime, 60000); // Update time every minute
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
+  }, []);
 
   return (
     <motion.div
@@ -89,16 +109,17 @@ const ContactForm: React.FC = () => {
           </p>
         </motion.div>
         <motion.div className="item" variants={formVariants}>
-          <h2 className="text-xl font-semibold">Mail</h2>
-          <span className="text-gray-500">hello@react.dev</span>
+          <h2 className="text-xl font-semibold">E-mail</h2>
+          <span className="text-gray-500">galfarotolon@gmail.com</span>
         </motion.div>
         <motion.div className="item" variants={formVariants}>
-          <h2 className="text-xl font-semibold">Address</h2>
-          <span className="text-gray-500">Hello street New York</span>
+          <h2 className="text-xl font-semibold">Time Zone</h2>
+          <span className="text-gray-500">Lima, Peru (GMT-5)</span>
+          <p className="text-gray-500">{time}</p>
         </motion.div>
         <motion.div className="item" variants={formVariants}>
           <h2 className="text-xl font-semibold">Phone</h2>
-          <span className="text-gray-500">+1 234 5678</span>
+          <span className="text-gray-500">+51 943 488 800</span>
         </motion.div>
       </motion.div>
       <div className="formContainer flex-1 relative">
