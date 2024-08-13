@@ -3,47 +3,7 @@ import { motion } from "framer-motion";
 import { LeftCurve, RightCurve } from "./ui/Curves";
 import MagicButton from "./ui/MagicButton";
 import { useState } from "react";
-
-const collabApps = [
-  {
-    id: 1,
-    name: "Tailwind CSS",
-    designation: "Utility-First CSS",
-    icon: "/tail.svg",
-  },
-  {
-    id: 2,
-    name: "TypeScript",
-    designation: "Typed JavaScript",
-    icon: "/ts.svg",
-  },
-  {
-    id: 3,
-    name: "Sanity.io",
-    designation: "Headless CMS",
-    icon: "/sanity.svg",
-  },
-  {
-    id: 4,
-    name: "Node.js",
-    designation: "Server-side JavaScript",
-    icon: "/nodejs.svg",
-  },
-  { id: 5, name: "Clerk", designation: "Authentication", icon: "c.svg" },
-  {
-    id: 6,
-    name: "MongoDB",
-    designation: "NoSQL Database",
-    icon: "/mongodb.svg",
-  },
-  {
-    id: 7,
-    name: "Framer Motion",
-    designation: "Animation Library",
-    icon: "/fm.svg",
-  },
-  { id: 8, name: "React", designation: "UI Library", icon: "/re.svg" },
-];
+import { techStack } from "@/data";
 
 const TechStack = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -84,6 +44,10 @@ const TechStack = () => {
     hidden: { opacity: 0, y: -10 },
     show: { opacity: 1, y: 0 },
   };
+
+  // Convert techStack object to an array for mapping
+  delete techStack.nextjs;
+  const techStackArray = Object.values(techStack);
 
   return (
     <div className="container lg:flex my-20">
@@ -147,7 +111,7 @@ const TechStack = () => {
           </div>
 
           <ul>
-            {collabApps.map((app, index) => (
+            {techStackArray.map((app, index) => (
               <li
                 key={app.id}
                 className={`absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom ${rotationClasses[index]}`}

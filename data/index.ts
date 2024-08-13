@@ -68,40 +68,98 @@ export const navItems = [
     },
 ];
 
+
+export const techStack = {
+  nextjs: {
+    id: 0,
+    name: "Next.js",
+    designation: "Utility-First CSS",
+    icon: "/next.svg",
+  },
+  tailwind: {
+    id: 1,
+    name: "Tailwind CSS",
+    designation: "Utility-First CSS",
+    icon: "/tail.svg",
+  },
+  typescript: {
+    id: 2,
+    name: "TypeScript",
+    designation: "Typed JavaScript",
+    icon: "/ts.svg",
+  },
+  sanity: {
+    id: 3,
+    name: "Sanity.io",
+    designation: "Headless CMS",
+    icon: "/sanity.svg",
+  },
+  nodejs: {
+    id: 4,
+    name: "Node.js",
+    designation: "Server-side JavaScript",
+    icon: "/nodejs.svg",
+  },
+  clerk: {
+    id: 5,
+    name: "Clerk",
+    designation: "Authentication",
+    icon: "/c.svg",
+  },
+  mongodb: {
+    id: 6,
+    name: "MongoDB",
+    designation: "NoSQL Database",
+    icon: "/mongodb.svg",
+  },
+  framermotion: {
+    id: 7,
+    name: "Framer Motion",
+    designation: "Animation Library",
+    icon: "/fm.svg",
+  },
+  react: {
+    id: 8,
+    name: "React",
+    designation: "UI Library",
+    icon: "/re.svg",
+  },
+};
+
 export const projects = [
-    {
-      id: 1,
-      title: "3D Solar System Planets to Explore",
-      description: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-      img: "/p1.svg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-      link: "/ui.earth.com",
-    },
-    {
-      id: 2,
-      title: "Yoom - Video Conferencing App",
-      description: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-      img: "/p2.svg",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-      link: "/ui.yoom.com",
-    },
-    {
-      id: 3,
-      title: "AI Image SaaS - Canva Application",
-      description: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-      img: "/p3.svg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-      link: "/ui.aiimg.com",
-    },
-    {
-      id: 4,
-      title: "Animated Apple Iphone 3D Website",
-      description: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects.",
-      img: "/p4.svg",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-      link: "/ui.apple.com",
-    },
-  ];
+  {
+    id: 1,
+    title: "3D Solar System Planets to Explore",
+    description: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
+    img: "/p1.svg",
+    iconLists: [techStack.react, techStack.tailwind, techStack.typescript, techStack.framermotion],
+    link: "/ui.earth.com",
+  },
+  {
+    id: 2,
+    title: "Yoom - Video Conferencing App",
+    description: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
+    img: "/p2.svg",
+    iconLists: [techStack.nextjs, techStack.tailwind, techStack.typescript, techStack.clerk],
+    link: "/ui.yoom.com",
+  },
+  {
+    id: 3,
+    title: "AI Image SaaS - Canva Application",
+    description: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
+    img: "/p3.svg",
+    iconLists: [techStack.react, techStack.tailwind, techStack.typescript, techStack.clerk],
+    link: "/ui.aiimg.com",
+  },
+  {
+    id: 4,
+    title: "Animated Apple Iphone 3D Website",
+    description: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects.",
+    img: "/p4.svg",
+    iconLists: [techStack.nextjs, techStack.tailwind, techStack.typescript,],
+    link: "/ui.apple.com",
+  },
+];
   
   export const testimonials = [
     {
@@ -160,7 +218,6 @@ export const projects = [
     },
   ];
   
-
   export const experiences = [
     {
       title: "Full Stack Web Development Student",

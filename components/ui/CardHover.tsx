@@ -1,11 +1,14 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { AnimatedTooltip } from "./AnimatedTooltip"; // Import AnimatedTooltip
 import { HoverBorderGradient } from "./HoverBorderGradient";
 import { FaLocationArrow } from "react-icons/fa6";
+import { techStack } from "@/data";
 
 const containerVariants = {
   initial: {},
@@ -39,7 +42,7 @@ export const CardHover = ({
     description: string;
     link: string;
     img: string;
-    iconLists: string[];
+    iconLists: (typeof techStack)[keyof typeof techStack][];
   }[];
   className?: string;
 }) => {
@@ -93,17 +96,8 @@ export const CardHover = ({
               <CardDescription>{item.description}</CardDescription>
               <div className="flex flex-col min-[480px]:flex-row items-center mt-4 justify-between ">
                 <div className="flex items-center max-[480px]:mb-4 ">
-                  {item.iconLists.map((icon, index) => (
-                    <div
-                      key={index}
-                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                      style={{
-                        transform: `translateX(-${3 * index + 2}px)`,
-                      }}
-                    >
-                      <img src={icon} alt="icon" className="p-2" />
-                    </div>
-                  ))}
+                  {/* Use AnimatedTooltip here */}
+                  <AnimatedTooltip items={Object.values(item.iconLists)} />
                 </div>
                 <Link href={item.link}>
                   <HoverBorderGradient className="text-xs flex text-center justify-center items-center ">
@@ -119,7 +113,6 @@ export const CardHover = ({
     </motion.div>
   );
 };
-
 export const Card = ({
   className,
   children,
