@@ -46,8 +46,8 @@ const TechStack = () => {
   };
 
   // Convert techStack object to an array for mapping
-  delete techStack.nextjs;
-  const techStackArray = Object.values(techStack);
+  const { nextjs, ...techStackWithoutNextjs } = techStack;
+  const techStackArray = Object.values(techStackWithoutNextjs);
 
   return (
     <div className="container lg:flex my-20">
