@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import SidebarLinks from "./SidebarLinks";
 import { FaAddressBook, FaTimes } from "react-icons/fa";
@@ -24,8 +24,10 @@ const sidebarVariants = {
   },
 };
 
-const Sidebar: React.FC = () => {
-  const [isOpen, toggleOpen] = useCycle(false, true);
+const Sidebar: React.FC<{
+  isContactInfoOpen: boolean;
+  toggleContactInfo: () => void;
+}> = ({ isContactInfoOpen, toggleContactInfo }) => {
   const containerRef = useRef(null);
 
   return (
@@ -33,26 +35,29 @@ const Sidebar: React.FC = () => {
       <motion.div
         className="fixed top-0 left-0 h-full w-full bg-transparent z-[5000]"
         initial={false}
-        animate={isOpen ? "open" : "closed"}
+        animate={isContactInfoOpen ? "open" : "closed"}
         variants={sidebarVariants}
         ref={containerRef}
       >
         <motion.div
           className={`${
-            isOpen ? "bg-gray-800" : "bg-transparent"
-          } h-full p-8 max-w-xs w-full`}
+            isContactInfoOpen ? "bg-gray-800" : "bg-transparent"
+          } h-full p-8 max-w-[200px] w-full sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[400px]`}
         >
-          <SidebarLinks isOpen={isOpen} />
+          <SidebarLinks isOpen={isContactInfoOpen} />
         </motion.div>
       </motion.div>
       <motion.div
-        className="fixed top-10 left-10 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer z-[6000]"
-        onClick={() => toggleOpen()}
+        className="fixed top-10 left-10 md:top-10 md:left-10 flex items-center justify-center cursor-pointer z-[6000] bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors"
+        onClick={toggleContactInfo}
       >
-        {isOpen ? (
+        {isContactInfoOpen ? (
           <FaTimes className="text-white" />
         ) : (
-          <FaAddressBook className="text-white" />
+          <>
+            <FaAddressBook className="text-white mr-2" />
+            <span className="text-xs sm:text-sm">Contact Info</span>
+          </>
         )}
       </motion.div>
     </>

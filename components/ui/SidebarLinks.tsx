@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { FaLinkedin, FaFileAlt, FaWhatsapp, FaPhone } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaFileAlt,
+  FaWhatsapp,
+  FaPhone,
+  FaGithub,
+} from "react-icons/fa";
 
 const variants = {
   open: {
@@ -9,7 +15,8 @@ const variants = {
   },
   closed: {
     transition: {
-      staggerChildren: 0.001,
+      staggerChildren: 0.05,
+      staggerDirection: -1,
     },
   },
 };
@@ -30,15 +37,33 @@ const SidebarLinks: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
-      link: "https://www.linkedin.com/in/guillermo-alfaro",
+      link: "https://www.linkedin.com/in/guillermo-alfaro/",
+      newTab: true,
     },
-    { name: "CV", icon: <FaFileAlt />, link: "#" },
+    {
+      name: "GitHub",
+      icon: <FaGithub />,
+      link: "https://github.com/galfarotolon",
+      newTab: true,
+    },
+    {
+      name: "CV",
+      icon: <FaFileAlt />,
+      link: "https://docs.google.com/document/d/1-R_XISy7JytR3cvx5UzjpyIBqgfrIaYvtu5fM3t1dMg/edit?usp=sharing",
+      newTab: true,
+    },
     {
       name: "WhatsApp",
       icon: <FaWhatsapp />,
-      link: "https://wa.me/yourphonenumber",
+      link: "https://wa.me/51943488800",
+      newTab: true,
     },
-    { name: "Phone", icon: <FaPhone />, link: "tel:+51943488800" },
+    {
+      name: "Phone",
+      icon: <FaPhone />,
+      link: "tel:+51943488800",
+      newTab: false, // Phone link should not open in a new tab
+    },
   ];
 
   return (
@@ -53,7 +78,9 @@ const SidebarLinks: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
           href={item.link}
           key={item.name}
           variants={itemVariants}
-          className="flex items-center space-x-2 text-xl py-2 px-4 rounded-md hover:scale-105 transition-transform"
+          className="flex items-center space-x-2 text-md py-2 px-4 rounded-md hover:scale-105 transition-transform"
+          target={item.newTab ? "_blank" : undefined}
+          rel={item.newTab ? "noopener noreferrer" : undefined}
         >
           <span>{item.icon}</span>
           <span>{item.name}</span>

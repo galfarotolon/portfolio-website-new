@@ -82,7 +82,7 @@ const ExperienceCard: React.FC<ExperienceProps> = ({
 const Experience: React.FC = () => {
   return (
     <>
-      <motion.div variants={textVariant(0.1)}>
+      <motion.div variants={textVariant(0.1)} id="experience">
         {/* <p className="text-center text-white">What I have done so far</p>
         <h2 className="text-center text-white">Work Experience.</h2> */}
 
