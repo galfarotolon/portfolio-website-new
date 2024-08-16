@@ -68,8 +68,8 @@ const ContactForm: React.FC = () => {
       const options: Intl.DateTimeFormatOptions = {
         timeZone: "America/Lima",
         hour12: true,
-        hour: "2-digit", // Must be "numeric" or "2-digit"
-        minute: "2-digit", // Must be "numeric" or "2-digit"
+        hour: "2-digit",
+        minute: "2-digit",
       };
       const formatter = new Intl.DateTimeFormat(undefined, options);
       const date = new Date();
@@ -77,9 +77,9 @@ const ContactForm: React.FC = () => {
     };
 
     updateTime();
-    const intervalId = setInterval(updateTime, 60000); // Update time every minute
+    const intervalId = setInterval(updateTime, 60000);
 
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -96,7 +96,7 @@ const ContactForm: React.FC = () => {
       >
         <motion.h2
           variants={formVariants}
-          className="heading text-4xl lg:max-w-[45vw] font-bold text-center"
+          className="heading text-2xl md:text-4xl lg:max-w-[45vw] font-bold text-center"
         >
           Ready to take{" "}
           <span className="text-blue-500">your digital presence</span> to the
@@ -109,17 +109,23 @@ const ContactForm: React.FC = () => {
           </p>
         </motion.div>
         <motion.div className="item" variants={formVariants}>
-          <h2 className="text-xl font-semibold">E-mail</h2>
-          <span className="text-gray-500">galfarotolon@gmail.com</span>
+          <h2 className="text-lg md:text-xl font-semibold">E-mail</h2>
+          <span className="text-gray-500 text-sm md:text-base">
+            galfarotolon@gmail.com
+          </span>
         </motion.div>
         <motion.div className="item" variants={formVariants}>
-          <h2 className="text-xl font-semibold">Time Zone</h2>
-          <span className="text-gray-500">Lima, Peru (GMT-5)</span>
-          <p className="text-gray-500">{time}</p>
+          <h2 className="text-lg md:text-xl font-semibold">Time Zone</h2>
+          <span className="text-gray-500 text-sm md:text-base">
+            Lima, Peru (GMT-5)
+          </span>
+          <p className="text-gray-500 text-sm md:text-base">{time}</p>
         </motion.div>
         <motion.div className="item" variants={formVariants}>
-          <h2 className="text-xl font-semibold">Phone</h2>
-          <span className="text-gray-500">+51 943 488 800</span>
+          <h2 className="text-lg md:text-xl font-semibold">Phone</h2>
+          <span className="text-gray-500 text-sm md:text-base">
+            +51 943 488 800
+          </span>
         </motion.div>
       </motion.div>
       <div className="formContainer flex-1 relative">
@@ -130,8 +136,8 @@ const ContactForm: React.FC = () => {
           transition={{ delay: 3, duration: 1 }}
         >
           <svg
-            width="450px"
-            height="450px"
+            width="350px"
+            height="350px"
             viewBox="0 0 32.666 32.666"
             className="stroke-orange-500"
           >
@@ -163,7 +169,7 @@ const ContactForm: React.FC = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}
-          className="space-y-6 absolute inset-0"
+          className="space-y-6 absolute inset-0 w-[90%] max-w-[500px] mx-auto"
         >
           <LabelInputContainer className="mb-4">
             <Label htmlFor="name">Name</Label>

@@ -5,11 +5,12 @@ import { CardHover } from "./ui/CardHover";
 
 const RecentProjects = () => {
   return (
-    <div className="py-20 " id="projects">
-      <h2 className="text-center text-[40px] md:text-3xl lg:text-4xl font-bold ">
-        A selection of <span className="text-blue-500">featured projects</span>
+    <div className="py-20 px-4 sm:px-6 md:px-10" id="projects">
+      <h2 className="text-center text-3xl lg:text-4xl font-bold px-4 sm:px-6 md:px-10 leading-tight">
+        A selection of{" "}
+        <span className="block sm:inline text-blue-500">featured projects</span>
       </h2>
-      <CardHover items={projects} className=" gap-16 mt-10" />
+      <CardHover items={projects} className="gap-16 mt-10" />
     </div>
   );
 };

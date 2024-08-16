@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import {
   VerticalTimeline,
@@ -38,8 +39,11 @@ const ExperienceCard: React.FC<ExperienceProps> = ({
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
     >
       <VerticalTimelineElement
+        className="max-w-[90%] sm:max-w-[80%] lg:max-w-[100%]"
         contentStyle={{ background: "#1d1836", color: "#fff" }}
-        contentArrowStyle={{ borderRight: "7px solid  #232631" }}
+        contentArrowStyle={{
+          borderRight: "7px solid  #232631",
+        }}
         date={experience.date}
         iconStyle={{ background: experience.iconBg }}
         position={position}
@@ -54,11 +58,11 @@ const ExperienceCard: React.FC<ExperienceProps> = ({
         }
       >
         <div>
-          <h3 className="text-white text-[24px] font-bold">
+          <h3 className="text-white text-[20px] sm:text-[24px] font-bold">
             {experience.title}
           </h3>
           <p
-            className="text-white-100 text-[16px] font-semibold"
+            className="text-white-100 text-[14px] sm:text-[16px] font-semibold"
             style={{ margin: 0 }}
           >
             {experience.company_name}
@@ -68,7 +72,7 @@ const ExperienceCard: React.FC<ExperienceProps> = ({
           {experience.points.map((point, index) => (
             <li
               key={`experience-point-${index}`}
-              className="text-white-100 text-[14px] pl-1 tracking-wider"
+              className="text-white-100 text-[12px] sm:text-[14px] pl-1 tracking-wider"
             >
               {point}
             </li>
@@ -83,23 +87,24 @@ const Experience: React.FC = () => {
   return (
     <>
       <motion.div variants={textVariant(0.1)} id="experience">
-        {/* <p className="text-center text-white">What I have done so far</p>
-        <h2 className="text-center text-white">Work Experience.</h2> */}
-
-        <h2 className="text-center text-[40px] md:text-3xl lg:text-4xl font-bold mb-10 ">
+        <h2 className="text-center text-[32px] sm:text-[36px] md:text-3xl lg:text-4xl font-bold mb-10 px-4 sm:px-0">
           My <span className="text-violet-500">Experience</span>
         </h2>
       </motion.div>
-
-      <div className="text-white-100 py-4 sm:px-20">
+      <motion.div
+        className="text-white-100 py-4 sm:px-20 px-4"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         In 2020, I switched careers by completing a full stack web development
         bootcamp. Now, with over 3 years of experience, I have worked in
         startups and undertaken freelance projects. My goal is to become a full
         stack web developer who can create exceptional web experiences while
         staying updated with the latest technologies.
-      </div>
+      </motion.div>
 
-      <div className="mt-20 flex flex-col">
+      <div className="pl-4 sm:pl-0 mt-20 flex flex-col">
         <VerticalTimeline animate={false}>
           {experiences.map((experience, index) => (
             <ExperienceCard

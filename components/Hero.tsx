@@ -34,7 +34,7 @@ const buttonVariants = {
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-20 md:pt-48 md:pb-32">
+    <div className="pb-20 pt-20 md:pt-32 md:pb-32">
       {/**
        *  UI: Spotlights
        *  Link: https://ui.aceternity.com/components/spotlight
@@ -69,7 +69,7 @@ const Hero = () => {
       </div>
 
       <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center space-y-6 md:space-y-8">
+        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
           <TextGenerateEffect
             words="Bringing Your Ideas to Life with Code"
             className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80"
@@ -103,6 +103,7 @@ const Hero = () => {
             variants={buttonVariants}
             initial="initial"
             animate="animate"
+            className="mt-6 md:mt-8"
           >
             <MagicButton
               title="See my work"

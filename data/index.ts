@@ -277,13 +277,11 @@ export const projects = [
     {
       id: 1,
       img: "/git.svg",
+      url: 'https://github.com/galfarotolon'
     },
     {
       id: 2,
-      img: "/twit.svg",
-    },
-    {
-      id: 3,
       img: "/link.svg",
+      url: 'https://www.linkedin.com/in/guillermo-alfaro'
     },
   ];

@@ -54,7 +54,7 @@ export const CardHover = ({
       initial="initial"
       whileInView="animate"
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-6",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-6 px-10 sm:px-10 md:px-4",
         className
       )}
     >
@@ -84,7 +84,7 @@ export const CardHover = ({
             )}
           </AnimatePresence>
           <Card>
-            <div className="relative w-full overflow-hidden rounded-t-3xl h-[30vh]">
+            <div className="relative w-full overflow-hidden rounded-t-3xl ">
               <img
                 src={item.img}
                 alt="cover"
@@ -94,13 +94,13 @@ export const CardHover = ({
             <div className="p-4">
               <CardTitle>{item.title}</CardTitle>
               <CardDescription>{item.description}</CardDescription>
-              <div className="flex flex-col min-[480px]:flex-row items-center mt-4 justify-between ">
-                <div className="flex items-center max-[480px]:mb-4 ">
+              <div className="flex flex-col min-[480px]:flex-row items-center mt-4 justify-between">
+                <div className="flex items-center max-[480px]:mb-4">
                   {/* Use AnimatedTooltip here */}
                   <AnimatedTooltip items={Object.values(item.iconLists)} />
                 </div>
                 <Link href={item.link}>
-                  <HoverBorderGradient className="text-xs flex text-center justify-center items-center ">
+                  <HoverBorderGradient className="text-xs flex text-center justify-center items-center">
                     View website
                     <FaLocationArrow className="ml-2" />
                   </HoverBorderGradient>
@@ -113,6 +113,7 @@ export const CardHover = ({
     </motion.div>
   );
 };
+
 export const Card = ({
   className,
   children,
