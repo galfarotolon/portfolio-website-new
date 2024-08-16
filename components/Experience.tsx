@@ -86,35 +86,37 @@ const ExperienceCard: React.FC<ExperienceProps> = ({
 const Experience: React.FC = () => {
   return (
     <>
-      <motion.div variants={textVariant(0.1)} id="experience">
-        <h2 className="text-center text-[32px] sm:text-[36px] md:text-3xl lg:text-4xl font-bold mb-10 px-4 sm:px-0">
-          My <span className="text-violet-500">Experience</span>
-        </h2>
-      </motion.div>
-      <motion.div
-        className="text-white-100 py-4 sm:px-20 px-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        In 2020, I switched careers by completing a full stack web development
-        bootcamp. Now, with over 3 years of experience, I have worked in
-        startups and undertaken freelance projects. My goal is to become a full
-        stack web developer who can create exceptional web experiences while
-        staying updated with the latest technologies.
-      </motion.div>
+      <section id="experience" className="py-20">
+        <motion.div variants={textVariant(0.1)}>
+          <h2 className="text-center text-[32px] sm:text-[36px] md:text-3xl lg:text-4xl font-bold mb-10 px-4 sm:px-0">
+            My <span className="text-violet-500">Experience</span>
+          </h2>
+        </motion.div>
+        <motion.div
+          className="text-white-100 py-4 sm:px-20 px-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          In 2020, I switched careers by completing a full stack web development
+          bootcamp. Now, with over 3 years of experience, I have worked in
+          startups and undertaken freelance projects. My goal is to become a
+          full stack web developer who can create exceptional web experiences
+          while staying updated with the latest technologies.
+        </motion.div>
 
-      <div className="pl-4 sm:pl-0 mt-20 flex flex-col">
-        <VerticalTimeline animate={false}>
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-              position={index % 2 === 0 ? "left" : "right"}
-            />
-          ))}
-        </VerticalTimeline>
-      </div>
+        <div className="pl-4 sm:pl-0 mt-20 flex flex-col">
+          <VerticalTimeline animate={false}>
+            {experiences.map((experience, index) => (
+              <ExperienceCard
+                key={`experience-${index}`}
+                experience={experience}
+                position={index % 2 === 0 ? "left" : "right"}
+              />
+            ))}
+          </VerticalTimeline>
+        </div>
+      </section>
     </>
   );
 };

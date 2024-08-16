@@ -54,7 +54,7 @@ export const CardHover = ({
       initial="initial"
       whileInView="animate"
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-6 px-10 sm:px-10 md:px-4",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-6 px-2  md:px-4",
         className
       )}
     >

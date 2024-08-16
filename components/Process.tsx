@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 const Process = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-screen py-16 max-w-7xl mx-auto">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen  max-w-7xl mx-auto">
       <motion.h2
-        className="text-center text-[28px] sm:text-[32px] md:text-3xl lg:text-4xl font-bold mb-4"
+        className="text-center text-3xl md:text-4xl font-bold mb-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -14,7 +14,7 @@ const Process = () => {
         <span className="text-orange-500">My Code,</span> Your Vision.
       </motion.h2>
       <motion.p
-        className="text-white-100 text-center mb-8  px-8 sm:px-20"
+        className="text-white-100 text-center mt-4 sm:mt-8 sm:mb-8  px-8 sm:px-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}

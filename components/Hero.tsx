@@ -8,13 +8,11 @@ import { motion } from "framer-motion";
 const variants = {
   initial: {
     opacity: 0,
-    y: 30,
   },
   animate: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 2,
+      duration: 3,
     },
   },
 };
@@ -103,7 +101,7 @@ const Hero = () => {
             variants={buttonVariants}
             initial="initial"
             animate="animate"
-            className="mt-6 md:mt-8"
+            className="mt-6 xl:mt-0"
           >
             <MagicButton
               title="See my work"

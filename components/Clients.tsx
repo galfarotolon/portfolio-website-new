@@ -25,7 +25,7 @@ const Clients = () => {
 
   return (
     <section id="testimonials" className="py-20">
-      <h2 className="text-center text-[40px] md:text-3xl lg:text-4xl font-bold">
+      <h2 className="text-center text-4xl font-bold">
         Kind words from{" "}
         <span className="text-green-500">satisfied clients</span>
       </h2>

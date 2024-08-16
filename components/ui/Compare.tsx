@@ -16,6 +16,7 @@ interface CompareProps {
   autoplay?: boolean;
   autoplayDuration?: number;
 }
+
 export const Compare = ({
   firstImage = "",
   secondImage = "",
@@ -23,7 +24,7 @@ export const Compare = ({
   firstImageClassName,
   secondImageClassname,
   initialSliderPercentage = 50,
-  slideMode = "hover",
+  slideMode = "drag",
   showHandlebar = true,
   autoplay = false,
   autoplayDuration = 5000,
@@ -36,6 +37,15 @@ export const Compare = ({
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Detect if it's a mobile device and set slideMode to drag
+  useEffect(() => {
+    const userAgent = navigator.userAgent;
+
+    if (/android|iPad|iPhone|iPod/i.test(userAgent)) {
+      slideMode = "drag";
+    }
+  }, []);
 
   const startAutoplay = useCallback(() => {
     if (!autoplay) return;
@@ -186,7 +196,7 @@ export const Compare = ({
             />
           </div>
           {showHandlebar && (
-            <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute   flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
+            <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
               {/* <IconDotsVertical className="h-4 w-4 text-black" /> */}
             </div>
           )}
@@ -209,7 +219,7 @@ export const Compare = ({
                 alt="first image"
                 src={firstImage}
                 className={cn(
-                  "absolute inset-0  z-20 rounded-2xl flex-shrink-0 w-full h-full select-none",
+                  "absolute inset-0 z-20 rounded-2xl flex-shrink-0 w-full h-full select-none",
                   firstImageClassName
                 )}
                 draggable={false}
@@ -223,7 +233,7 @@ export const Compare = ({
         {secondImage ? (
           <motion.img
             className={cn(
-              "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
+              "absolute top-0 left-0 z-[19] rounded-2xl w-full h-full select-none",
               secondImageClassname
             )}
             alt="second image"

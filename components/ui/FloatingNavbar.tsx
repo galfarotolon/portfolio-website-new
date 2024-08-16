@@ -6,9 +6,14 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { FaBars, FaTimes } from "react-icons/fa";
+
+type NavItem = {
+  name: string;
+  link: string;
+  icon?: JSX.Element;
+};
 
 const FloatingNav = ({
   navItems,
@@ -16,18 +21,16 @@ const FloatingNav = ({
   isNavbarOpen,
   toggleNavbar,
 }: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: JSX.Element;
-  }[];
+  navItems: NavItem[];
   className?: string;
   isNavbarOpen: boolean;
   toggleNavbar: () => void;
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
+  const [activeSection, setActiveSection] = useState<string>("");
   const menuRef = useRef<HTMLDivElement>(null);
+  const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -62,6 +65,42 @@ const FloatingNav = ({
     };
   }, [isNavbarOpen]);
 
+  useEffect(() => {
+    // Observe sections as they come into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0.5 } // Adjust this threshold as needed
+    );
+
+    navItems.forEach((item) => {
+      const section = document.querySelector(item.link) as HTMLElement | null;
+      if (section) {
+        sectionsRef.current[item.link] = section;
+        observer.observe(section);
+      }
+    });
+
+    return () => {
+      navItems.forEach((item) => {
+        const section = sectionsRef.current[item.link];
+        if (section) {
+          observer.unobserve(section);
+        }
+      });
+    };
+  }, [navItems]);
+
+  const handleLinkClick = (link: string) => {
+    setActiveSection(link);
+    toggleNavbar();
+  };
+
   return (
     <>
       <AnimatePresence mode="wait">
@@ -88,19 +127,21 @@ const FloatingNav = ({
             border: "1px solid rgba(255, 255, 255, 0.125)",
           }}
         >
-          {navItems.map((navItem: any, idx: number) => (
-            <Link
-              key={`link=${idx}`}
+          {navItems.map((navItem: NavItem, idx: number) => (
+            <a
+              key={`link-${idx}`}
               href={navItem.link}
+              onClick={() => handleLinkClick(navItem.link)}
               className={cn(
-                "relative dark:text-neutral-50 flex items-center space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 cursor-pointer"
+                "relative dark:text-neutral-50 flex items-center space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 cursor-pointer",
+                activeSection === navItem.link && "text-neutral-500"
               )}
             >
               <span className="block sm:hidden">{navItem.icon}</span>
               <span className="text-xs sm:text-sm md:text-base">
                 {navItem.name}
               </span>
-            </Link>
+            </a>
           ))}
         </motion.div>
       </AnimatePresence>
@@ -126,16 +167,18 @@ const FloatingNav = ({
           >
             <div className="relative p-8 h-full">
               <div className="flex flex-col items-center justify-center h-full space-y-4">
-                {navItems.map((navItem: any, idx: number) => (
-                  <Link
-                    key={`link=${idx}`}
+                {navItems.map((navItem: NavItem, idx: number) => (
+                  <a
+                    key={`link-${idx}`}
                     href={navItem.link}
+                    onClick={() => handleLinkClick(navItem.link)}
                     className={cn(
-                      "block text-white text-sm py-2 px-4 hover:bg-gray-700 rounded"
+                      "block text-white text-sm py-2 px-4 hover:bg-gray-700 rounded",
+                      activeSection === navItem.link && "bg-gray-700"
                     )}
                   >
                     {navItem.name}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>

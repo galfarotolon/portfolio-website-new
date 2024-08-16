@@ -1,8 +1,9 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import SidebarLinks from "./SidebarLinks";
-import { FaAddressBook, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import { IoIosContact } from "react-icons/io";
 
 const sidebarVariants = {
   open: (height = 1000) => ({
@@ -28,12 +29,41 @@ const Sidebar: React.FC<{
   isContactInfoOpen: boolean;
   toggleContactInfo: () => void;
 }> = ({ isContactInfoOpen, toggleContactInfo }) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Detect clicks outside the sidebar
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        toggleContactInfo();
+      }
+    };
+
+    if (isContactInfoOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isContactInfoOpen, toggleContactInfo]);
 
   return (
     <>
+      {isContactInfoOpen && (
+        // Overlay for detecting clicks outside of the sidebar
+        <div
+          className="fixed inset-0 bg-transparent z-[4000]"
+          onClick={toggleContactInfo}
+        />
+      )}
       <motion.div
-        className="fixed top-0 left-0 h-full w-full bg-transparent z-[5000]"
+        className="fixed top-0 left-0 h-full bg-transparent z-[5000]"
         initial={false}
         animate={isContactInfoOpen ? "open" : "closed"}
         variants={sidebarVariants}
@@ -42,7 +72,7 @@ const Sidebar: React.FC<{
         <motion.div
           className={`${
             isContactInfoOpen ? "bg-gray-800" : "bg-transparent"
-          } h-full p-8 max-w-[200px] w-full sm:max-w-[150px] md:max-w-[150px] lg:max-w-[250px] xl:max-w-[200px]`}
+          } h-full p-8 max-w-[200px] sm:max-w-[150px] md:max-w-[150px] lg:max-w-[250px] xl:max-w-[200px]`}
         >
           <SidebarLinks isOpen={isContactInfoOpen} />
         </motion.div>
@@ -55,7 +85,7 @@ const Sidebar: React.FC<{
           <FaTimes className="text-white" />
         ) : (
           <>
-            <FaAddressBook className="text-white" />
+            <IoIosContact className="text-white w-6 h-6" />
             <span className="hidden sm:inline text-xs sm:text-sm ml-2">
               Contact Info
             </span>

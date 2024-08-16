@@ -2,10 +2,7 @@ import { socialMedia } from "@/data";
 
 const Footer = () => {
   return (
-    <footer
-      className="w-full pt-20 pb-10 md:mb-10 sm:px-10 px-5 max-w-7xl mx-auto relative"
-      id="contact"
-    >
+    <footer className="w-full pt-20 pb-10 mb-24 sm:px-10 px-5 max-w-7xl mx-auto relative">
       {/* background grid */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
@@ -16,10 +13,6 @@ const Footer = () => {
       </div>
 
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center relative z-10">
-        <p className="md:text-base text-sm md:font-normal font-light">
-          Copyright © 2024 Guillermo Alfaro
-        </p>
-
         <div className="flex items-center mt-3 sm:mt-0 md:gap-3 gap-6">
           {socialMedia.map((info) => (
             <div
@@ -32,6 +25,9 @@ const Footer = () => {
             </div>
           ))}
         </div>
+        <p className="md:text-base text-sm md:font-normal font-light pt-10 md:pt-0 ">
+          Copyright © 2024 Guillermo Alfaro
+        </p>
       </div>
     </footer>
   );

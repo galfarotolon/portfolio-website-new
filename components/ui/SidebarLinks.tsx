@@ -10,13 +10,14 @@ import {
 const variants = {
   open: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1, // Stagger children to make them appear in sequence
+      delayChildren: 0.3, // Delay the start of children animation
     },
   },
   closed: {
     transition: {
       staggerChildren: 0.05,
-      staggerDirection: -1,
+      staggerDirection: -1, // Reverse the order of disappearance
     },
   },
 };
@@ -27,8 +28,10 @@ const itemVariants = {
     opacity: 1,
   },
   closed: {
-    y: 0,
     opacity: 0,
+    transition: {
+      duration: 0.2, // Make sure this happens faster than the sidebar background
+    },
   },
 };
 
