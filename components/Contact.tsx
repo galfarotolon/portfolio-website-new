@@ -132,20 +132,20 @@ const ContactForm: React.FC = () => {
             </p>
           </motion.div>
           <div className="px-10">
-            <motion.div className="item" variants={formVariants}>
+            <motion.div className="item my-4" variants={formVariants}>
               <h2 className="text-lg md:text-xl font-semibold">E-mail</h2>
               <span className="text-gray-500 text-sm md:text-base">
                 galfarotolon@gmail.com
               </span>
             </motion.div>
-            <motion.div className="item" variants={formVariants}>
+            <motion.div className="item my-4" variants={formVariants}>
               <h2 className="text-lg md:text-xl font-semibold">Time Zone</h2>
               <span className="text-gray-500 text-sm md:text-base">
                 Lima, Peru (GMT-5)
               </span>
               <p className="text-gray-500 text-sm md:text-base">{time}</p>
             </motion.div>
-            <motion.div className="item" variants={formVariants}>
+            <motion.div className="item my-4" variants={formVariants}>
               <h2 className="text-lg md:text-xl font-semibold">Phone</h2>
               <span className="text-gray-500 text-sm md:text-base">
                 +51 943 488 800

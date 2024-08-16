@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { testimonials } from "@/data";
 import { InfiniteCards } from "./ui/InfiniteCards";
 import { FaFastForward, FaFastBackward } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Clients = () => {
   const [speed, setSpeed] = useState<"fast" | "normal" | "slow">("normal");
@@ -25,10 +26,15 @@ const Clients = () => {
 
   return (
     <section id="testimonials" className="py-20">
-      <h2 className="text-center text-4xl font-bold">
+      <motion.h2
+        initial={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        whileInView={{ opacity: 1 }}
+        className="text-center text-4xl font-bold"
+      >
         Kind words from{" "}
         <span className="text-green-500">satisfied clients</span>
-      </h2>
+      </motion.h2>
 
       <div className="flex flex-col items-center max-lg:mt-10">
         <div className="h-[50vh] md:h-[30rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">

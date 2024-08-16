@@ -87,8 +87,12 @@ const Experience: React.FC = () => {
   return (
     <>
       <section id="experience" className="py-20">
-        <motion.div variants={textVariant(0.1)}>
-          <h2 className="text-center text-[32px] sm:text-[36px] md:text-3xl lg:text-4xl font-bold mb-10 px-4 sm:px-0">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-center text-4xl font-bold mb-4 px-4 sm:px-0">
             My <span className="text-violet-500">Experience</span>
           </h2>
         </motion.div>

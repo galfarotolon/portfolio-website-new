@@ -78,7 +78,7 @@ const Sidebar: React.FC<{
         </motion.div>
       </motion.div>
       <motion.div
-        className="fixed top-14 sm:top-[4rem] left-10 transform -translate-y-1/2 flex items-center justify-center cursor-pointer z-[6000] bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors"
+        className="fixed top-14 sm:top-[4rem] left-10 transform -translate-y-1/2 flex items-center justify-center cursor-pointer z-[6000] bg-gray-800 text-white px-2 py-2 sm:px-4 rounded-full hover:bg-gray-700 transition-colors"
         onClick={toggleContactInfo}
       >
         {isContactInfoOpen ? (
